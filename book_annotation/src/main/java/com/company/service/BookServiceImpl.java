@@ -11,7 +11,7 @@ import com.company.persistence.BookDAO;
 // BookServiceImpl 객체 생성 단, id 명은 bookServiceImpl
 @Service // == @Component
 public class BookServiceImpl implements BookService {
-
+ 
 	@Autowired
 	private BookDAO dao;
 	
