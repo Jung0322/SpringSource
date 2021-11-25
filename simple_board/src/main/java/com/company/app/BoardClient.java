@@ -9,56 +9,77 @@ import com.company.domain.BoardDTO;
 import com.company.service.BoardService;
 
 public class BoardClient {
-
 	public static void main(String[] args) {
+		
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
-		BoardService service = (BoardService) ctx.getBean("boardService");
-
-		//»ğÀÔ
-//		BoardDTO insertdto = new BoardDTO();
-//		insertdto.setTitle("½ºÆ®¸µ ÇÁ·¹ÀÓ¿öÅ©");
-//		insertdto.setContent("½ºÇÁ¸µ ÇÁ·¹ÀÓ¿öÅ© °Ô½ÃÆÇ");
-//		insertdto.setWriter("È«±æµ¿");
-//		System.out.println(service.insertBoard(insertdto)?"ÀÔ·Â¼º°ø":"ÀÔ·Â½ÇÆĞ");
+		BoardService service  = (BoardService) ctx.getBean("boardService");		
 		
-		//°³º°°Ë»ö
-//		System.out.println("------------------------");
-//		System.out.println("°³º°°Ë»ö");
-//		BoardDTO dto1 = new BoardDTO();
-//		dto1 = service.getRow(1);
-//		System.out.println("bno\t title\t content\t writer\t regdate\t updatedate");
-//		System.out.print(dto1.getBno() + "\t");
-//		System.out.print(dto1.getTitle() + "\t");
-//		System.out.print(dto1.getContent() + "\t");
-//		System.out.print(dto1.getWriter() + "\t");
-//		System.out.print(dto1.getRegdate() + "\t");
-//		System.out.print(dto1.getUpdatedate() + "\t");
+//		BoardDTO insertDto = new BoardDTO();
+//		insertDto.setTitle("ìŠ¤í”„ë§ í”„ë ˆì„ì›Œí¬");
+//		insertDto.setContent("ìŠ¤í”„ë§ í”„ë ˆì„ì›Œí¬ ê²Œì‹œíŒ");
+//		insertDto.setWriter("í™ê¸¸ë™");
+//		
+//		System.out.println(service.insertBoard(insertDto)?"ì…ë ¥ì„±ê³µ":"ì…ë ¥ì‹¤íŒ¨");
 		
-		//¼öÁ¤
+		
+		
+//		BoardDTO row=service.getRow(1);		
+//		
+//		System.out.print(row.getBno()+"\t");
+//		System.out.print(row.getTitle()+"\t");
+//		System.out.print(row.getContent()+"\t");
+//		System.out.print(row.getWriter()+"\t");
+//		System.out.print(row.getRegdate()+"\t");
+//		System.out.print(row.getUpdatedate()+"\n");		
+		
 //		BoardDTO updateDto = new BoardDTO();
 //		updateDto.setBno(1);
-//		updateDto.setTitle("½ºÇÁ¸µ ¼öÁ¤");
-//		updateDto.setContent("DI¶õ ¹«¾ùÀÎ°¡");
-//		System.out.println(service.updateBoard(updateDto)?"¼öÁ¤¼º°ø":"¼öÁ¤½ÇÆĞ");
+//		updateDto.setTitle("ìŠ¤í”„ë§ ìˆ˜ì •");
+//		updateDto.setContent("DIë€ ë¬´ì—‡ì¸ê°€");		
+//		
+//		System.out.println(service.updateBoard(updateDto)?"ìˆ˜ì •ì„±ê³µ":"ìˆ˜ì •ì‹¤íŒ¨");		
 		
-		//»èÁ¦
-		System.out.println(service.deleteBoard(1)?"»èÁ¦¼º°ø":"»èÁ¦½ÇÆĞ");
+		System.out.println(service.deleteBoard(1)?"ì‚­ì œì„±ê³µ":"ì‚­ì œì‹¤íŒ¨");
 		
-		//ÀüÃ¼Á¶È¸
+		System.out.println();		
+		
+		
 		List<BoardDTO> list = service.getRows();
-
-		System.out.println("------------------------");
-		System.out.println("bno\t title\t content\t writer\t regdate\t updatedate");
-		for (BoardDTO dto : list) {
-			System.out.print(dto.getBno() + "\t");
-			System.out.print(dto.getTitle() + "\t");
-			System.out.print(dto.getContent() + "\t");
-			System.out.print(dto.getWriter() + "\t");
-			System.out.print(dto.getRegdate() + "\t");
-			System.out.print(dto.getUpdatedate() + "\t");
-		}
 		
+		System.out.println("-------------------------------------");
+		System.out.println("bno\t title\t content\t writer\t regdate\t updatedate");
+		System.out.println("-------------------------------------");
+		for(BoardDTO dto:list) {
+			System.out.print(dto.getBno()+"\t");
+			System.out.print(dto.getTitle()+"\t");
+			System.out.print(dto.getContent()+"\t");
+			System.out.print(dto.getWriter()+"\t");
+			System.out.print(dto.getRegdate()+"\t");
+			System.out.print(dto.getUpdatedate()+"\n");		
+		}
 
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

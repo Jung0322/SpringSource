@@ -5,13 +5,23 @@ import java.util.List;
 import com.company.domain.BookDTO;
 
 public interface BookService {
-	//ÀüÃ¼ µµ¼­ ¸ñ·Ï
+	//ì „ì²´ ë„ì„œ ëª©ë¡
 	public List<BookDTO> getList();
-	
-	//»õ·Î¿î µµ¼­ ÀÔ·Â
+	//ìƒˆë¡œìš´ ë„ì„œ ì…ë ¥
 	public boolean insertBook(BookDTO dto);
-	// »èÁ¦
-	public boolean detele(String code);
-	//¼öÁ¤
-	public boolean update(String code, int price);
+	//ë„ì„œ ì •ë³´ ìˆ˜ì •
+	public boolean updateBook(String code,int price);
+	//ë„ì„œ ì •ë³´ ì‚­ì œ
+	public boolean deleteBook(String code);
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -7,8 +7,23 @@ import com.company.domain.MemberDTO;
 
 public interface MemberService {
 	public List<MemberDTO> getList();
-	public MemberDTO getRow(String userid, String password);
+	public MemberDTO getRow(String userid,String password);
 	public boolean updateMember(ChangeDTO chanDto);
-	public boolean deleteMember(String userid, String password);
-	public boolean insertMember(MemberDTO dto);
+	public boolean deleteMember(String userid,String password);
+	public boolean insertMember(MemberDTO insertDto);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

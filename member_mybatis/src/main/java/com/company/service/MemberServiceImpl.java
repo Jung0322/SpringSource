@@ -9,44 +9,50 @@ import com.company.domain.ChangeDTO;
 import com.company.domain.MemberDTO;
 import com.company.mapper.MemberMapper;
 
-@Service("service") //ÀÌ¸§À» ¾È ºÙÀÌ´Â °æ¿ì MemberServiceImpl
+@Service("service")  //ì´ë¦„ì„ ì•ˆ ë¶™ì´ëŠ” ê²½ìš° memberServiceImpl
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberMapper mapper;
+	
 
 	@Override
-	public List<MemberDTO> getList() {
-		
+	public List<MemberDTO> getList() {		
 		return mapper.list();
 	}
 
 
 	@Override
-	public MemberDTO getRow(String userid, String password) {
-		// TODO Auto-generated method stub
+	public MemberDTO getRow(String userid, String password) {		
 		return mapper.read(userid, password);
 	}
 
 
 	@Override
-	public boolean updateMember(ChangeDTO chanDto) {
-		
+	public boolean updateMember(ChangeDTO chanDto) {		
 		return mapper.update(chanDto)>0?true:false;
 	}
 
 
 	@Override
-	public boolean deleteMember(String userid, String password) {
-		// TODO Auto-generated method stub
-		return mapper.delete(userid, password)>0?true:false;
+	public boolean deleteMember(String userid, String password) {		
+		return mapper.delete(userid,password)>0?true:false;
 	}
 
 
 	@Override
-	public boolean insertMember(MemberDTO dto) {
-		// TODO Auto-generated method stub
-		return mapper.insert(dto)>0?true:false;
+	public boolean insertMember(MemberDTO insertDto) {		
+		return mapper.insert(insertDto)>0?true:false;
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+

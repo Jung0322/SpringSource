@@ -1,16 +1,24 @@
 package ch2;
 
-public class SamsungTv {
-	public void powerOn() {
-		System.out.println("SamsungTv - ÆÄ¿ö On");
+public class SamsungTv implements TV{
+	@Override
+	public void turnOn() {
+		System.out.println("SamsungTv - íŒŒì›Œ On");
+		
 	}
-	public void powerOff() {
-		System.out.println("SamsungTv - ÆÄ¿ö Off");
+	@Override
+	public void turnOff() {
+		System.out.println("SamsungTv - íŒŒì›Œ Off");
+		
 	}
-	public void volumeUp() {
-		System.out.println("SamsungTv - º¼·ý Up");
-	}	
-	public void volumeDown() {
-		System.out.println("SamsungTv - º¼·ý Down");
+	@Override
+	public void soundUp() {
+		System.out.println("SamsungTv - ë³¼ë¥¨ Up");
+		
+	}
+	@Override
+	public void soundDown() {
+		System.out.println("SamsungTv - ë³¼ë¥¨ Down");
+		
 	}
 }

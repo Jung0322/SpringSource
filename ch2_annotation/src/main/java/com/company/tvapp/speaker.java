@@ -1,9 +1,9 @@
 package com.company.tvapp;
 
-public interface speaker {
+public interface Speaker {
 
-	void volumUp();
+	void volumeUp();
 
-	void volumDown();
+	void volumeDown();
 
 }

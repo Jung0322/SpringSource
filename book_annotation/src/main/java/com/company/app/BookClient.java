@@ -9,25 +9,30 @@ import com.company.domain.BookDTO;
 import com.company.service.BookService;
 
 public class BookClient {
-
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
 		
-		//¼­ºñ½º È£Ãâ
-		//BookService service = new BookService()
-		BookService service = (BookService) ctx.getBean("bookServiceImpl");
-		//»õ·Î¿î µµ¼­ ÀÔ·Â
-//		BookDTO insertDto = new BookDTO("1006","½ºÇÁ¸µ","±¸¸Û°¡°Ô",32000);
-//		System.out.println(service.insertBook(insertDto)?"ÀÔ·Â¼º°ø":"ÀÔ·Â½ÇÆĞ");
+		//ì„œë¹„ìŠ¤ í˜¸ì¶œ
+		// BookService service = new BookServiceImpl();
+		BookService service = (BookService) ctx.getBean("bookServiceImpl");		
 		
-		// update
-		System.out.println(service.update("1002",35000)?"¼öÁ¤¼º°ø":"¼öÁ¤½ÇÆĞ");
-		//delete
-		System.out.println(service.detele("1006")?"»èÁ¦¼º°ø":"»èÁ¦½ÇÆĞ");
-		//ÀüÃ¼ ¸®½ºÆ® °á°ú È£Ãâ
+		//ìƒˆë¡œìš´ ë„ì„œ ì…ë ¥
+//		BookDTO insertDto = new BookDTO("1006", "ìŠ¤í”„ë§", "êµ¬ë©ê°€ê²Œ", 32000);		
+//		System.out.println(service.insertBook(insertDto)?"ì…ë ¥ì„±ê³µ":"ì…ë ¥ì‹¤íŒ¨");	
+		
+		//ë„ì„œ ì •ë³´ ìˆ˜ì •
+		System.out.println(service.updateBook("1006", 40000)?"ìˆ˜ì •ì„±ê³µ":"ìˆ˜ì •ì‹¤íŒ¨");
+		
+		//ë„ì„œ ì •ë³´ ì‚­ì œ
+		System.out.println(service.deleteBook("1005")?"ì‚­ì œì„±ê³µ":"ì‚­ì œì‹¤íŒ¨");
+		
+		
+		
+		//ì „ì²´ ë¦¬ìŠ¤íŠ¸ ê²°ê³¼ í˜¸ì¶œ
 		List<BookDTO> list = service.getList();
 		
-		System.out.println("ÄÚµå     Á¦¸ñ     ÀÛ°¡     °¡°İ");
+		System.out.println("ì½”ë“œ     ì œëª©     ì‘ê°€     ê°€ê²©");
+		System.out.println("-------------------------------------");
 		for(BookDTO book:list) {
 			System.out.print(book.getCode()+"\t");
 			System.out.print(book.getTitle()+"\t");
@@ -36,6 +41,11 @@ public class BookClient {
 		}
 		
 	}
-	
-
 }
+
+
+
+
+
+
+

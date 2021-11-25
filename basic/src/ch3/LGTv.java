@@ -1,43 +1,47 @@
 package ch3;
 
-public class LGTv implements TV {
+public class LgTv implements TV {
 	
 	//private SonySpeaker speaker = new SonySpeaker();
-	private speaker speaker;	// has-a : ÃÊ±âÈ­(»ı¼ºÀÚ, setter)
+	private Speaker speaker;	// has-a : ì´ˆê¸°í™”(ìƒì„±ì, setter)
 	
 	
-	public LGTv() {
-		System.out.println("LgTV °´Ã¼ »ı¼º");
+	public LgTv() {
+		
 	}
 	
-	public LGTv(speaker speaker) {
+	public LgTv(Speaker speaker) {
 		super();
 		this.speaker = speaker;
 	}	
 	
-	public void setSpeaker(speaker speaker) {
+	public void setSpeaker(Speaker speaker) {
 		this.speaker = speaker;
 	}	
 	
 	
 	@Override
 	public void turnOn() {
-		System.out.println("LgTv - Àü¿ø On");
+		System.out.println("LgTv - ì „ì› On");
 	}
 	@Override
 	public void turnOff() {
-		System.out.println("LgTv - Àü¿ø Off");
+		System.out.println("LgTv - ì „ì› Off");
 	}
 	@Override
 	public void soundUp() {
-		//System.out.println("LgTv - º¼·ı Up");
+		//System.out.println("LgTv - ë³¼ë¥¨ Up");
 		//speaker = new SonySpeaker();
-		speaker.volumUp();;
+		speaker.volumeUp();
 	}
 	@Override
 	public void soundDown() {
-		//System.out.println("LgTv - º¼·ı Down");
+		//System.out.println("LgTv - ë³¼ë¥¨ Down");
 		//speaker = new SonySpeaker();
-		speaker.volumDown();
+		speaker.volumeDown();
 	}
 }
+
+
+
+

@@ -7,47 +7,51 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("lg")
-public class LGTv implements TV {
+public class LgTv implements TV {
 	
-	//private SonySpeaker speaker = new SonySpeaker();
-	//@Autowired // »ı¼ºµÈ °´Ã¼¸¦ ÁÖÀÔ(Speaker¸¦ ±¸ÇöÇÏ´Â ¸ğµç Å¬·¡½º°¡ ´ë»ó)
-	@Inject // Autowired¿Í °°Àº ±â´É
-	@Qualifier("apple") // ÀÌ¸§ ÁöÁ¤ ±â´É ¹Û¿¡ ¾øÀ½ (ÁÖÀÔÇÒ ´ë»óÀÌ ¿©·¯°³ÀÏ¶§ »ç¿ë)
-	private speaker speaker;	// has-a : ÃÊ±âÈ­(»ı¼ºÀÚ, setter)
+	//@Autowired  //ìƒì„±ëœ ê°ì²´ë¥¼ ì£¼ì…(Speaker ë¥¼ êµ¬í˜„í•˜ëŠ” ëª¨ë“  í´ë˜ìŠ¤ê°€ ëŒ€ìƒ)
+	
+	@Inject
+	@Qualifier("apple")  //ì´ë¦„ ì§€ì • ê¸°ëŠ¥ ë°–ì— ì—†ìŒ
+	private Speaker speaker;	
 	
 	
-	public LGTv() {
-		System.out.println("LgTV °´Ã¼ »ı¼º");
+	public LgTv() {
+		System.out.println("LgTV ê°ì²´ ìƒì„±");
 	}
 	
-//	public LGTv(speaker speaker) {
+//	public LgTv(Speaker speaker) {
 //		super();
 //		this.speaker = speaker;
 //	}	
 //	
-//	public void setSpeaker(speaker speaker) {
+//	public void setSpeaker(Speaker speaker) {
 //		this.speaker = speaker;
 //	}	
-//	
+	
 	
 	@Override
 	public void turnOn() {
-		System.out.println("LgTv - Àü¿ø On");
+		System.out.println("LgTv - ì „ì› On");
 	}
 	@Override
 	public void turnOff() {
-		System.out.println("LgTv - Àü¿ø Off");
+		System.out.println("LgTv - ì „ì› Off");
 	}
 	@Override
 	public void soundUp() {
-		//System.out.println("LgTv - º¼·ı Up");
+		//System.out.println("LgTv - ë³¼ë¥¨ Up");
 		//speaker = new SonySpeaker();
-		speaker.volumUp();;
+		speaker.volumeUp();
 	}
 	@Override
 	public void soundDown() {
-		//System.out.println("LgTv - º¼·ı Down");
+		//System.out.println("LgTv - ë³¼ë¥¨ Down");
 		//speaker = new SonySpeaker();
-		speaker.volumDown();
+		speaker.volumeDown();
 	}
 }
+
+
+
+

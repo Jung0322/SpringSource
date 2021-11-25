@@ -1,19 +1,19 @@
 package com.company.tvapp;
 
-public class Applespeaker implements speaker {
-	public Applespeaker()
-	{
-		System.out.println("AppleSepaker °´Ã¼ »ı¼º");
+public class AppleSpeaker implements Speaker {
+	
+	public AppleSpeaker() {
+		System.out.println("AppleSpeaker ê°ì²´ ìƒì„±");
 	}
+	
+
 	@Override
-	public void volumUp() {
-		// TODO Auto-generated method stub
-		System.out.println("AppleSpeaker volume up");
+	public void volumeUp() {
+		System.out.println("AppleSpeaker volume Up");
 	}
 
 	@Override
-	public void volumDown() {
-		// TODO Auto-generated method stub
+	public void volumeDown() {
 		System.out.println("AppleSpeaker volume Down");
 	}
 

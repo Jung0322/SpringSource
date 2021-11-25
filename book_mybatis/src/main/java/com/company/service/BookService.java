@@ -2,21 +2,29 @@ package com.company.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.company.domain.BookDTO;
 
 public interface BookService {
-	//Æ¯Á¤ µµ¼­ °¡Á®¿À±â
+	//íŠ¹ì • ë„ì„œ ê°€ì ¸ì˜¤ê¸°
 	public BookDTO getRow(String code);
 	
-	//ÀüÃ¼ µµ¼­ ¸ñ·Ï
+	//ì „ì²´ ë„ì„œ ëª©ë¡
 	public List<BookDTO> getList();
-	
-	//»õ·Î¿î µµ¼­ ÀÔ·Â
+	//ìƒˆë¡œìš´ ë„ì„œ ì…ë ¥
 	public boolean insertBook(BookDTO dto);
-	// »èÁ¦
-	public boolean detele(String code);
-	//¼öÁ¤
-	public boolean update(String code,int price);
+	//ë„ì„œ ì •ë³´ ìˆ˜ì •
+	public boolean updateBook(String code,int price);
+	//ë„ì„œ ì •ë³´ ì‚­ì œ
+	public boolean deleteBook(String code);
 }
+
+
+
+
+
+
+
+
+
+
+

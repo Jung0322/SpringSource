@@ -2,8 +2,7 @@ package com.company.app;
 
 import org.springframework.stereotype.Component;
 
-
-@Component //°´Ã¼ »ı¼º
+@Component  //ê°ì²´ ìƒì„±
 public class Product {
 	private String company;
 	private String pname;
@@ -26,13 +25,27 @@ public class Product {
 	}
 	public void setPrice(String price) {
 		this.price = price;
-	}
+	}	
 	
 	public void getInfo() throws Exception {
-		System.out.println("");
-		System.out.println("È¸»ç¸í" + company);
-		System.out.println("Á¦Ç°¸í" + pname);
-		System.out.println("°¡°İ" + price);
+		
+		System.out.println("íšŒì‚¬ëª… : "+company);
+		System.out.println("ì œí’ˆëª… : "+pname);
+		System.out.println("ê°€ê²© : "+price);
 		throw new Exception();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

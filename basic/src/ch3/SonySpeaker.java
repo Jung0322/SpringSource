@@ -1,17 +1,17 @@
 package ch3;
 
-public class SonySpeaker implements speaker {
+public class SonySpeaker implements Speaker {
 	public SonySpeaker() {
-		System.out.println("SonySpeaker °´Ã¼ »ı¼º");
+		System.out.println("SonySpeaker ê°ì²´ ìƒì„±");
 	}
+	
 	@Override
-	public void volumUp() {
-		System.out.println("SonySpeaker -- º¼·ı ¾÷");
-		
+	public void volumeUp() {
+		System.out.println("SonySpeaker -- ë³¼ë¥¨ ì—…");
 	}
+	
 	@Override
-	public void volumDown() {
-		System.out.println("SonySpeaker -- º¼·ı ´Ù¿î");
-		
+	public void volumeDown() {
+		System.out.println("SonySpeaker -- ë³¼ë¥¨ ë‹¤ìš´");
 	}
 }

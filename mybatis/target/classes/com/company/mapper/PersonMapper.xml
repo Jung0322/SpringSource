@@ -5,17 +5,29 @@
 		insert into Person(id,name) values(#{id},#{name})
 	</insert>
 	<update id="updatePerson">
-		update person
+		update person 
 		set name=#{name}
-		where id = #{id}
+		where id=#{id}
 	</update>
 	<delete id="deletePerson">
 		delete from person where id=#{id}
-	</delete>
+	</delete>	
 	<select id="selectPerson" resultType="java.lang.String">
-		select name from person where id =#{id}
-	</select>
-	<select id="all" resultType="com.company.domain.PersonDTO">
-		select * from person
+		select name from person where id=#{id}
 	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

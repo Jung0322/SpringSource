@@ -8,34 +8,38 @@ import org.springframework.stereotype.Service;
 import com.company.domain.BookDTO;
 import com.company.persistence.BookDAO;
 
-// BookServiceImpl °´Ã¼ »ı¼º ´Ü, id ¸íÀº bookServiceImpl
+
+// BookServiceImpl ê°ì²´ ìƒì„± ë‹¨, id ëª…ì€  bookServiceImpl
 @Service // == @Component
 public class BookServiceImpl implements BookService {
- 
-	@Autowired
-	private BookDAO dao;
+
+	@Autowired //ì£¼ì…(ìƒì„±ëœ ê°ì²´ ë„£ì–´ì¤˜!!)
+	private BookDAO dao;	
 	
 	@Override
-	public List<BookDTO> getList() {
+	public List<BookDTO> getList() {		
 		return dao.list();
 	}
 
 	@Override
-	public boolean insertBook(BookDTO dto) {
-		
+	public boolean insertBook(BookDTO dto) {		
 		return dao.insert(dto);
 	}
 
 	@Override
-	public boolean detele(String code) {
-		
-		return dao.detele(code);
-	}
-
-	@Override
-	public boolean update(String code, int price) {
-		// TODO Auto-generated method stub
+	public boolean updateBook(String code, int price) {		
 		return dao.update(code, price);
 	}
 
+	@Override
+	public boolean deleteBook(String code) {		
+		return dao.delete(code);
+	}
 }
+
+
+
+
+
+
+

@@ -1,31 +1,40 @@
 package com.company.app;
 
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.company.domain.PersonDTO;
 import com.company.service.PersonService;
 
 public class PersonClient {
-
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
 		
 		PersonService service = (PersonService) ctx.getBean("person");
 		
-//		System.out.println(service.insertPerson("choi123", "ÃÖÁö¼ö")?"ÀÔ·Â¼º°ø":"ÀÔ·Â½ÇÆÐ");
-//		System.out.println(service.selecPerson("hong123"));
-//		System.out.println(service.updatePerson("hong123","°­¹Ì¼ö")?"¼öÁ¤¼º°ø":"¼öÁ¤½ÇÆÐ");
-//		System.out.println(service.deletePerson("hong123")?"»èÁ¦¼º°ø":"»èÁ¦½ÇÆÐ");
+		System.out.println(service.insertPerson("choi123", "ìµœì§€ìˆ˜")?"ìž…ë ¥ì„±ê³µ":"ìž…ë ¥ì‹¤íŒ¨");
 		
-		List<PersonDTO> list = service.list();
 		
-		for(PersonDTO dto : list) {
-			System.out.print("¾ÆÀÌµð : "+dto.getId()+"\t");
-			System.out.println("ÀÌ¸§ : "+dto.getName());
-		}
-	}
+		System.out.println(service.updatePerson("kang123", "ê°•ë¯¸ìˆ˜")?"ìˆ˜ì •ì„±ê³µ":"ìˆ˜ì •ì‹¤íŒ¨");		
+		System.out.println(service.selectPerson("kang123"));
+		
+		System.out.println(service.deletePerson("choi123")?"ì‚­ì œì„±ê³µ":"ì‚­ì œì‹¤íŒ¨");
 
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

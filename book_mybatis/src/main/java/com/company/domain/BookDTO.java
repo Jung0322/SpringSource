@@ -8,12 +8,12 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @ToString
+@Setter
+@Getter
 public class BookDTO {
-	String code;
-	String title;
-	String writer;
-	int price;
+	private String code;
+	private String title;
+	private String writer;
+	private int price;
 }

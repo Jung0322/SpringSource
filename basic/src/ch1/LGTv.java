@@ -1,16 +1,16 @@
 package ch1;
 
-public class LGTv {
+public class LgTv {
 	public void turnOn() {
-		System.out.println("LGTv - Àü¿ø On");
+		System.out.println("LgTv - ì „ì› On");
 	}
 	public void turnOff() {
-		System.out.println("LGTv - Àü¿ø Off");
+		System.out.println("LgTv - ì „ì› Off");
 	}
 	public void soundUp() {
-		System.out.println("LGTv - º¼·ı Up");
-	}	
+		System.out.println("LgTv - ë³¼ë¥¨ Up");
+	}
 	public void soundDown() {
-		System.out.println("LGTv - º¼·ı Down");
+		System.out.println("LgTv - ë³¼ë¥¨ Down");
 	}
 }

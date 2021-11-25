@@ -3,6 +3,4 @@ create table person(
 	name varchar2(30) not null
 );
 
-insert into person values('hong123','ȫ�浿');
-
-select * from person;
+insert into person values('hong123','홍길동');

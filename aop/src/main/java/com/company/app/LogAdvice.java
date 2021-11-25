@@ -10,41 +10,51 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 
-@Aspect 	//app ¾î³ëÅ×ÀÌ¼Ç ¼³Á¤ ¹æ½Ä
+@Aspect   //aop ì–´ë…¸í…Œì´ì…˜ ì„¤ì • ë°©ì‹
 @Component("log")
 public class LogAdvice {
 	
-	@Before(value= "execution(* com.company.app.Product.getInfo())")
+	@Before(value="execution(* com.company.app.Product.getInfo())")
 	public void beforeLog() {
-		System.out.println("[°øÅë·Î±×] ºñÁî´Ï½º ·ÎÁ÷ ¼öÇà Àü È£Ãâ");
+		System.out.println("[ê³µí†µë¡œê·¸] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ ì „ í˜¸ì¶œ");
 	}
 	
-	@After(value= "execution(* com.company.app.Product.getInfo())")
+	@After(value="execution(* com.company.app.Product.getInfo())")
 	public void afterLog() {
-		System.out.println("[°øÅë·Î±×] ºñÁî´Ï½º ·ÎÁ÷ ¼öÇà ÈÄ È£Ãâ - ¿¹¿Ü¿Í »ó°ü¾øÀÌ È£Ãâ");
+		System.out.println("[ê³µí†µë¡œê·¸] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ í›„ í˜¸ì¶œ - ì˜ˆì™¸ì™€ ìƒê´€ì—†ì´ í˜¸ì¶œ");
 	}
-
-	@AfterThrowing(value= "execution(* com.company.app.Product.getInfo())")
+	
+	@AfterThrowing(value="execution(* com.company.app.Product.getInfo())")
 	public void afterThrowLog() {
-		System.out.println("[°øÅë·Î±×] ºñÁî´Ï½º ·ÎÁ÷ ¼öÇà ÈÄ È£Ãâ - ¿¹¿Ü ¹ß»ı½Ã È£Ãâ");
+		System.out.println("[ê³µí†µë¡œê·¸] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ í›„ í˜¸ì¶œ - ì˜ˆì™¸ ë°œìƒì‹œ í˜¸ì¶œ");
 	}
-
-	@AfterReturning(value= "execution(* com.company.app.Product.getInfo())")
+	
+	@AfterReturning(value="execution(* com.company.app.Product.getInfo())")
 	public void afterReturnLog() {
-		System.out.println("[°øÅë·Î±×] ºñÁî´Ï½º ·ÎÁ÷ ¼öÇà ÈÄ È£Ãâ - Á¤»ó ¼öÇà½Ã È£Ãâ");
+		System.out.println("[ê³µí†µë¡œê·¸] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ í›„ í˜¸ì¶œ - ì •ìƒ ìˆ˜í–‰ì‹œ í˜¸ì¶œ");
 	}
-
-	@Around(value= "execution(* com.company.app.Product.getInfo())")
+	
+	@Around(value="execution(* com.company.app.Product.getInfo())")
 	public void aroundLog(ProceedingJoinPoint pjp) {
-		System.out.println("[°øÅë·Î±× ºñÁî´Ï½º ·ÎÁ÷ ¼öÇà Àü È£Ãâ");
-
+		System.out.println("[ê³µí†µë¡œê·¸] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ ì „ í˜¸ì¶œ");
+		
 		try {
-			pjp.proceed(); // ½ÇÁ¦ ¼öÇàÇÒ ¸Ş¼Òµå È£Ãâ
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
+			pjp.proceed(); //ì‹¤ì œ ìˆ˜í–‰í•  ë©”ì†Œë“œ í˜¸ì¶œ
+		} catch (Throwable e) {			
 			e.printStackTrace();
 		}
-
-		System.out.println("[°øÅë·Î±×] ºñÁî´Ï½º ·ÎÁ÷ ¼öÇà ÈÄ È£Ãâ");
+		
+		System.out.println("[ê³µí†µë¡œê·¸] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ í›„ í˜¸ì¶œ");
 	}
+	
 }
+
+
+
+
+
+
+
+
+
+

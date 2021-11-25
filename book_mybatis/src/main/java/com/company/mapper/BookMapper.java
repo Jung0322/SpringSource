@@ -12,4 +12,17 @@ public interface BookMapper {
 	public int insert(BookDTO dto);
 	public int update(@Param("code") String code,@Param("price") int price);
 	public int delete(String code);
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+

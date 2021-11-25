@@ -6,41 +6,47 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class JdbcUtil {
-
-
-	//¿⁄ø¯«ÿ¡¶
-
-	public static void close(PreparedStatement pstmt) {
-		if (pstmt != null) {
-			try {
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-	}
-
-	public static void close(ResultSet rs) {
-		if (rs != null) {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-	}
-
+public class JdbcUtil {	
+	
+	//ÏûêÏõêÌï¥Ï†ú
 	public static void close(Connection con) {
-		if (con != null) {
+		if(con!=null) {
 			try {
 				con.close();
-			} catch (Exception e) {
+			} catch (SQLException e) {				
 				e.printStackTrace();
 			}
-
+		}
+	}
+	public static void close(PreparedStatement pstmt) {
+		if(pstmt!=null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
+		}
+	}
+	public static void close(ResultSet rs) {
+		if(rs!=null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,40 +9,58 @@ import com.company.domain.BookDTO;
 import com.company.mapper.BookMapper;
 
 
-// BookServiceImpl °´Ã¼ »ı¼º ´Ü, id ¸íÀº bookServiceImpl
+// BookServiceImpl ê°ì²´ ìƒì„± ë‹¨, id ëª…ì€  bookServiceImpl
 @Service // == @Component
 public class BookServiceImpl implements BookService {
 	
 	@Autowired
-	private BookMapper mapper;
+	private BookMapper mapper;	
+	
 	
 	@Override
-	public List<BookDTO> getList() {
+	public List<BookDTO> getList() {		
 		return mapper.list();
 	}
 
 	@Override
-	public boolean insertBook(BookDTO dto) {
-		
+	public boolean insertBook(BookDTO dto) {		
 		return mapper.insert(dto)>0?true:false;
 	}
 
 	@Override
-	public boolean detele(String code) {
-		
-		return mapper.delete(code)>0?true:false;
-	}
-
-	@Override
-	public boolean update(String code, int price) {
-		// TODO Auto-generated method stub
+	public boolean updateBook(String code, int price) {		
 		return mapper.update(code, price)>0?true:false;
 	}
 
 	@Override
-	public BookDTO getRow(String code) {
-	
-		return mapper.read(code);
+	public boolean deleteBook(String code) {		
+		return mapper.delete(code)>0?true:false;
 	}
 
+	@Override
+	public BookDTO getRow(String code) {		
+		return mapper.read(code);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

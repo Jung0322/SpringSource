@@ -1,20 +1,20 @@
 package ch2;
 
-public class LGTv implements TV {
+public class LgTv implements TV {
 	@Override
 	public void turnOn() {
-		System.out.println("LGTv - Àü¿ø On");
+		System.out.println("LgTv - ì „ì› On");
 	}
 	@Override
 	public void turnOff() {
-		System.out.println("LGTv - Àü¿ø Off");
+		System.out.println("LgTv - ì „ì› Off");
 	}
 	@Override
 	public void soundUp() {
-		System.out.println("LGTv - º¼·ı Up");
-	}	
+		System.out.println("LgTv - ë³¼ë¥¨ Up");
+	}
 	@Override
 	public void soundDown() {
-		System.out.println("LGTv - º¼·ı Down");
+		System.out.println("LgTv - ë³¼ë¥¨ Down");
 	}
 }

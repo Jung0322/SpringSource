@@ -8,44 +8,88 @@ import org.springframework.stereotype.Repository;
 
 import com.company.domain.BoardDTO;
 
+
 @Repository
 public class BoardDAO {
-
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
-	// »ðÀÔ
-	public boolean insert(BoardDTO dto) {
-
-		String sql = "insert into spring_board(bno,title,content,writer) values(seq_board.nextval,?,?,?)";
-		// update(sql,object...args) : ÀÎÀÚÀÇ °³¼ö°¡ Á¤ÇØÁöÁö ¾ÊÀº °Ü¿ì
-		int result = jdbcTemplate.update(sql, dto.getTitle(), dto.getContent(), dto.getWriter());
-
-		return result > 0 ? true : false;
+	
+	
+	//ì‚½ìž…
+	public boolean insert(BoardDTO insertDto) {
+		
+		String sql = "insert into spring_board(bno,title,content,writer) "
+				+ "values(seq_board.nextval,?,?,?)";
+		
+		// update(sql,Object...args) : ì¸ìžì˜ ê°œìˆ˜ê°€ ì •í•´ì§€ì§€ ì•Šì€ ê²½ìš°
+		int result = jdbcTemplate.update(sql,insertDto.getTitle(),
+						insertDto.getContent(),insertDto.getWriter());	
+		
+		return result > 0 ? true: false;
 	}
-
-	public List<BoardDTO> list() {
+	
+	//ì „ì²´ ì¡°íšŒ
+	public List<BoardDTO> list(){		
 		String sql = "select * from spring_board";
-		return jdbcTemplate.query(sql, new BoardRowMapper());
+		return jdbcTemplate.query(sql, new BoardRowMapper());			
 	}
-
-	// Æ¯Á¤ °Ô½Ã¹° °¡Á®¿À±â
-	public BoardDTO getRow(int bno) {
-		String sql = " select * from spring_board where bno = ?";
-		return jdbcTemplate.queryForObject(sql, new BoardRowMapper(), bno);
+	
+	
+	//íŠ¹ì • ê²Œì‹œë¬¼ ê°€ì ¸ì˜¤ê¸°
+	public BoardDTO getRow(int bno) {		
+		String sql = "select * from spring_board where bno=?";
+		return jdbcTemplate.queryForObject(sql, new BoardRowMapper(),bno);			
 	}
-
-	// °Ô½Ã¹° ¾÷µ¥ÀÌÆ®
-	public boolean update(BoardDTO dto) {
-		String sql = "update spring_board set title=?,content=?,updatedate=sysdate where bno=?";
-		int result = jdbcTemplate.update(sql, dto.getTitle(), dto.getContent(), dto.getBno());
-		return result > 0 ? true : false;
+	
+	//ê²Œì‹œë¬¼ ì—…ë°ì´íŠ¸
+	public boolean update(BoardDTO updateDto) {
+		
+		String sql = "update spring_board set title=?, content=?, updatedate=sysdate where bno=?";
+		
+		int result = jdbcTemplate.update(sql, updateDto.getTitle(),
+					updateDto.getContent(),updateDto.getBno());
+		
+		return result > 0 ? true: false;			
 	}
-
-	// °Ô½Ã¹° »èÁ¦
-	public boolean delete(int bno) {
+	
+	public boolean delete(int bno) {		
+			
 		String sql = "delete from spring_board where bno=?";
-		int result = jdbcTemplate.update(sql, bno);
-		return result > 0 ? true : false;
-	}
+		int result = jdbcTemplate.update(sql,bno);
+		
+		return result > 0 ? true: false;
+	}	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,19 +4,23 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class HelloApp {
-
 	public static void main(String[] args) {
 		
-		System.out.println("=========== ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê ±¸µ¿ Àü=========");
+		System.out.println("============ ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆ êµ¬ë™ ì „ =====");
 		
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationConfig.xml");
 		
-		System.out.println("=========== ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê ±¸µ¿ ===========");
+		System.out.println("======== ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆ êµ¬ë™ ===========");
 		
-		//½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê·ÎºÎÅÍ ÇÊ¿äÇÑ °´Ã¼¸¦ ¿äÃ»
-		MessageBean msg = (MessageBean) ctx.getBean("ko");
-		msg.sayHello("È«±æµ¿");
+		//ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆë¡œë¶€í„° í•„ìš”í•œ ê°ì²´ë¥¼ ìš”ì²­
+		MessageBean msg = (MessageBean)ctx.getBean("en");
+		msg.sayHello("í™ê¸¸ë™");	
 		
 	}
-
 }
+
+
+
+
+
+

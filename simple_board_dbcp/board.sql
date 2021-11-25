@@ -1,16 +1,18 @@
 create table spring_board(
-	bno number(10,0),                  -- ±Û¹øÈ£
-	title varchar2(200) not null,	   -- Á¦¸ñ
-	content varchar2(200) not null,	   -- ³»¿ë
-	writer varchar2(50) not null,	   -- ÀÛ¼ºÀÚ
-	regdate date default sysdate, 	   -- ÀÛ¼º³¯Â¥
-	updatedate date default sysdate	   -- ¼öÁ¤³¯Â¥
+	bno number(10,0),                 -- ê¸€ë²ˆí˜¸
+	title varchar2(200) not null,     -- ì œëª©
+	content varchar2(2000) not null,  -- ë‚´ìš©
+	writer varchar2(50) not null,     -- ì‘ì„±ì
+	regdate date default sysdate,     -- ì‘ì„±ë‚ ì§œ
+	updatedate date default sysdate   -- ìˆ˜ì •ë‚ ì§œ
 );
 
 alter table spring_board add constraint pk_spring_board primary key(bno);
 
 create sequence seq_board;
 
-select * from SPRING_BOARD;
 
-delete from spring_board where bno = 2;
+
+
+
+

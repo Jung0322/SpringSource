@@ -10,7 +10,18 @@ import com.company.domain.MemberDTO;
 public interface MemberMapper {
 	public List<MemberDTO> list();
 	public MemberDTO read(@Param("userid") String userid,@Param("password") String password);
-	public int update(ChangeDTO dto);
+	public int update(ChangeDTO changeDto);
 	public int delete(@Param("userid") String userid,@Param("password") String password);
-	public int insert(MemberDTO dto);
+	public int insert(MemberDTO insertDto);
 }
+
+
+
+
+
+
+
+
+
+
+

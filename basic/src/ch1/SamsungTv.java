@@ -1,30 +1,16 @@
 package ch1;
 
-import ch2.TV;
-
-public class SamsungTv implements TV{
-	@Override
-	public void turnOn() {
-		// TODO Auto-generated method stub
-		System.out.println("SamsungTv - ÆÄ¿ö On");
-		
+public class SamsungTv {
+	public void powerOn() {
+		System.out.println("SamsungTv - íŒŒì›Œ On");
 	}
-	@Override
-	public void turnOff() {
-		// TODO Auto-generated method stub
-		System.out.println("SamsungTv - ÆÄ¿ö Off");
-		
+	public void powerOff() {
+		System.out.println("SamsungTv - íŒŒì›Œ Off");
 	}
-	@Override
-	public void soundUp() {
-		System.out.println("SamsungTv - º¼·ý Up");
-		// TODO Auto-generated method stub
-		
+	public void volumeUp() {
+		System.out.println("SamsungTv - ë³¼ë¥¨ Up");
 	}
-	@Override
-	public void soundDown() {
-		// TODO Auto-generated method stub
-		System.out.println("SamsungTv - º¼·ý Down");
-		
+	public void volumeDown() {
+		System.out.println("SamsungTv - ë³¼ë¥¨ Down");
 	}
 }

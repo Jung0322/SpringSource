@@ -9,40 +9,42 @@ import com.company.domain.BoardDTO;
 import com.company.mapper.BoardMapper;
 
 
+
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
-
+	
 	@Autowired
 	private BoardMapper mapper;
-	
-	@Override
-	public boolean insertBoard(BoardDTO dto) {
-		
-		return mapper.insert(dto)>0?true:false;
-	}
 
 	@Override
-	public boolean deleteBoard(int bno) {
-		// TODO Auto-generated method stub
+	public boolean insertBoard(BoardDTO insertDto) {		
+		return mapper.insert(insertDto)>0?true:false;
+	}
+	@Override
+	public boolean deleteBoard(int bno) {	
 		return mapper.delete(bno)>0?true:false;
 	}
-
 	@Override
-	public BoardDTO getRow(int bno) {
-		// TODO Auto-generated method stub
+	public BoardDTO getRow(int bno) {		
 		return mapper.read(bno);
 	}
-
 	@Override
-	public List<BoardDTO> getRows() {
-		// TODO Auto-generated method stub
+	public List<BoardDTO> getRows() {		
 		return mapper.list();
 	}
-
 	@Override
-	public boolean updateBoard(BoardDTO dto) {
-		// TODO Auto-generated method stub
-		return mapper.update(dto)>0?true:false;
+	public boolean updateBoard(BoardDTO updateDto) {		
+		return mapper.update(updateDto)>0?true:false;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+

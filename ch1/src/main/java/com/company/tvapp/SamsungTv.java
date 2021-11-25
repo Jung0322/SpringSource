@@ -3,26 +3,28 @@ package com.company.tvapp;
 public class SamsungTv implements TV{
 	
 	public SamsungTv() {
-		System.out.println("samsung Tv °´Ã¼»ı¼º");
+		System.out.println("SamsunTv ê°ì²´ ìƒì„±");
 	}
+	
+	
 	@Override
 	public void turnOn() {
-		System.out.println("SamsungTv - ÆÄ¿ö On");
+		System.out.println("SamsungTv - íŒŒì›Œ On");
 		
 	}
 	@Override
 	public void turnOff() {
-		System.out.println("SamsungTv - ÆÄ¿ö Off");
+		System.out.println("SamsungTv - íŒŒì›Œ Off");
 		
 	}
 	@Override
 	public void soundUp() {
-		System.out.println("SamsungTv - º¼·ı Up");
+		System.out.println("SamsungTv - ë³¼ë¥¨ Up");
 		
 	}
 	@Override
 	public void soundDown() {
-		System.out.println("SamsungTv - º¼·ı Down");
+		System.out.println("SamsungTv - ë³¼ë¥¨ Down");
 		
 	}
 }

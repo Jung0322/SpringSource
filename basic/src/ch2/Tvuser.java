@@ -1,18 +1,21 @@
 package ch2;
 
-public class Tvuser {
-	public static void main(String[] args) {
-//		SamsungTv tv = new SamsungTv();
-//		
-//		tv.powerOn();
-//		tv.volumeUp();
-//		tv.volumeDown();
-//		tv.powerOff();
-		
-		TV tv = new LGTv();
+public class TvUser {
+	public static void main(String[] args) {	
+		//결합력을 낮추는 방식 => 다형성
+		TV tv = new SamsungTv();
 		tv.turnOn();
-		tv.soundDown();
 		tv.soundUp();
+		tv.soundDown();
 		tv.turnOff();
 	}
 }
+
+
+
+
+
+
+
+
+

@@ -12,35 +12,39 @@ import com.company.service.MemberService;
 
 public class MemberClient {
 	public static void main(String[] args) {
-
-		// ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê ·Îµå
+		
+		//ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆ ë¡œë“œ
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
-
-		// ¼­ºñ½º ¸Ş¼Òµå È£Ãâ
+		
+		//ì„œë¹„ìŠ¤ ë©”ì†Œë“œ í˜¸ì¶œ
 		MemberService service = (MemberService) ctx.getBean("service");
-
+		
+		
 		Scanner sc = new Scanner(System.in);
 		boolean flag = true;
-
-		while (flag) {
-			System.out.println("==========================================");
-			System.out.println("1.ÀüÃ¼ ¸â¹ö Á¶È¸");
-			System.out.println("2.Æ¯Á¤ ¸â¹ö Á¶È¸");
-			System.out.println("3.Æ¯Á¤ ¸â¹ö ¼öÁ¤");
-			System.out.println("4.Æ¯Á¤ ¸â¹ö »èÁ¦");
-			System.out.println("5.Æ¯Á¤ ¸â¹ö Ãß°¡");
-			System.out.println("6.ÇÁ·Î±×·¥ Á¾·á");
-			System.out.println("==========================================");
-
-			System.out.println("¸Ş´º >> ");
-			int no = Integer.parseInt(sc.next());
-
+		
+		while(flag) {
+			System.out.println("===================================================");
+			System.out.println("1. ì „ì²´ ë©¤ë²„ ì¡°íšŒ");
+			System.out.println("2. íŠ¹ì • ë©¤ë²„ ì¡°íšŒ");
+			System.out.println("3. íŠ¹ì • ë©¤ë²„ ìˆ˜ì •");
+			System.out.println("4. íŠ¹ì • ë©¤ë²„ ì‚­ì œ");
+			System.out.println("5. íŠ¹ì • ë©¤ë²„ ì¶”ê°€");
+			System.out.println("6. í”„ë¡œê·¸ë¨ ì¢…ë£Œ");			
+			System.out.println("===================================================");
+			
+			System.out.print("ë©”ë‰´ >> ");
+			int no = Integer.parseInt(sc.nextLine());
+			
 			switch (no) {
-			case 1:
+			case 1:				
+				
 				System.out.println();
-				List<MemberDTO> list = service.getList();
-				System.out.println("¾ÆÀÌµğ\t¼º¸í\t¼ºº°\tÀÌ¸ŞÀÏ");
-				System.out.println("==========================================");
+				
+				List<MemberDTO> list = service.getList();				
+				
+				System.out.println("ì•„ì´ë””\t ì„±ëª…\t ì„±ë³„\t ì´ë©”ì¼");
+				System.out.println("--------------------------------------");
 				
 				for(MemberDTO dto:list) {
 					System.out.print(dto.getUserid()+"\t");
@@ -48,66 +52,106 @@ public class MemberClient {
 					System.out.print(dto.getGender()+"\t");
 					System.out.print(dto.getEmail()+"\n");
 				}
-				System.out.println();
+				System.out.println();	
 				
 				break;
 			case 2:
-				System.out.println();
+				System.out.println("ì¡°íšŒí•  ì‚¬ìš©ì ì •ë³´ ì…ë ¥");
+				System.out.println("---------------------------");
+				System.out.print("userid : ");				
+				String userid = sc.nextLine();
+				System.out.print("password : ");				
+				String password = sc.nextLine();
 				
-				System.out.print("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				String userid = sc.next();
-				System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				String password = sc.next();
-				MemberDTO dto = service.getRow(userid, password);
-				System.out.println("¾ÆÀÌµğ\t¼º¸í\t¼ºº°\tÀÌ¸ŞÀÏ");
-				System.out.println("==========================================");
-				System.out.print(dto.getUserid()+"\t");
-				System.out.print(dto.getName()+"\t");
-				System.out.print(dto.getGender()+"\t");
-				System.out.print(dto.getEmail()+"\n");
+				MemberDTO memberDto = service.getRow(userid, password);
+				System.out.println();
+				System.out.println("ì¡°íšŒí•œ ì‚¬ìš©ì ì •ë³´ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.");
+				System.out.println("-----------------------------------------");
+				System.out.print("userid : "+memberDto.getUserid()+"\t");	
+				System.out.print("name : "+memberDto.getName()+"\t");	
+				System.out.print("gender : "+memberDto.getGender()+"\t");	
+				System.out.print("email : "+memberDto.getEmail()+"\n");	
+				System.out.println();
 				break;
 			case 3:
-				System.out.println();
+				System.out.println("ìˆ˜ì •í•  ì‚¬ìš©ì ì •ë³´ ì…ë ¥");
+				System.out.println("---------------------------");
+				System.out.print("userid : ");				
+				userid = sc.nextLine();
+				System.out.print("password : ");				
+				password = sc.nextLine();
+				System.out.print("confirm_password : ");				
+				String confirm_password = sc.nextLine();
+				
 				ChangeDTO changeDTO = new ChangeDTO();
-				System.out.print("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				changeDTO.setUserid(sc.next());
-				System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				changeDTO.setPassword(sc.next());
-				System.out.print("»õ·Î¿î ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				changeDTO.setConfirm_password(sc.next());
-				System.out.println(service.updateMember(changeDTO)?"¼öÁ¤¼º°ø":"¼öÁ¤½ÇÆĞ");
+				changeDTO.setUserid(userid);
+				changeDTO.setPassword(password);
+				changeDTO.setConfirm_password(confirm_password);
+				
+				System.out.println("ìˆ˜ì • ê²°ê³¼ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤. ");
+				System.out.println(service.updateMember(changeDTO)?"ìˆ˜ì •ì„±ê³µ":"ìˆ˜ì •ì‹¤íŒ¨");				
+				
 				break;
 			case 4:
-				System.out.println();
-				System.out.print("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				String deleteUserid = sc.next();
-				System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				String deletePassword = sc.next();
-				System.out.println(service.deleteMember(deleteUserid, deletePassword)?"»èÁ¦¼º°ø":"»èÁ¦½ÇÆĞ");
+				System.out.println("íƒˆí‡´í•  ì‚¬ìš©ì ì •ë³´ ì…ë ¥");
+				System.out.println("---------------------------");
+				System.out.print("userid : ");				
+				userid = sc.nextLine();
+				System.out.print("password : ");				
+				password = sc.nextLine();
+				
+				System.out.println("íƒˆí‡´ ê²°ê³¼ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤. ");
+				System.out.println(service.deleteMember(userid,password)?"íƒˆí‡´ì„±ê³µ":"íƒˆí‡´ì‹¤íŒ¨");				
 				break;
 			case 5:
 				System.out.println();
+				System.out.println("ì…ë ¥í•  ì‚¬ìš©ì ì •ë³´");
+				System.out.println("---------------------");
+						
 				MemberDTO insertDto = new MemberDTO();
-				System.out.print("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				insertDto.setUserid(sc.next());
-				System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-				insertDto.setPassword(sc.next());
-				System.out.print("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
-				insertDto.setName(sc.next());
-				System.out.print("¼ºº°À» ÀÔ·ÂÇÏ¼¼¿ä.");
-				insertDto.setGender(sc.next());
-				System.out.print("e-mailÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
-				insertDto.setEmail(sc.next());
-				System.out.println(service.insertMember(insertDto)?"»ğÀÔ¼º°ø":"»ğÀÔ½ÇÆĞ");
+				
+				System.out.print("userid : ");	
+				insertDto.setUserid(sc.nextLine());
+				
+				System.out.print("password : ");	
+				insertDto.setPassword(sc.nextLine());
+				
+				System.out.print("name : ");
+				insertDto.setName(sc.nextLine());				
+				
+				System.out.print("gender : ");
+				insertDto.setGender(sc.nextLine());
+				
+				System.out.print("email : ");	
+				insertDto.setEmail(sc.nextLine());				
+				
+				System.out.println("íšŒì› ê°€ì… ê²°ê³¼ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.");
+				System.out.println(service.insertMember(insertDto)?"ê°€ì… ì„±ê³µ":"ê°€ì… ì‹¤íŒ¨");
+				
 				break;
 			case 6:
 				flag = false;
-				System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+				System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 				break;
-
-		
 			}
+			
 		}
-	}
 
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

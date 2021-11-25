@@ -3,17 +3,17 @@ package com.company.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
+import lombok.Setter;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class ChangeDTO {
 	private String userid;
-	private String password; //ÇöÀç ºñ¹Ð¹øÈ£
+	private String password;  //í˜„ìž¬ ë¹„ë°€ë²ˆí˜¸
 	private String new_password;
-	private String confirm_password; // º¯°æÇÒ ºñ¹Ð¹øÈ£
+	private String confirm_password; //ë³€ê²½í•  ë¹„ë°€ë²ˆí˜¸
 }

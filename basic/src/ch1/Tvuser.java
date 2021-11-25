@@ -1,6 +1,6 @@
 package ch1;
 
-public class Tvuser {
+public class TvUser {
 	public static void main(String[] args) {
 //		SamsungTv tv = new SamsungTv();
 //		
@@ -9,10 +9,20 @@ public class Tvuser {
 //		tv.volumeDown();
 //		tv.powerOff();
 		
-		LGTv tv = new LGTv();
+		LgTv tv = new LgTv();
 		tv.turnOn();
-		tv.soundDown();
 		tv.soundUp();
+		tv.soundDown();
 		tv.turnOff();
+
 	}
 }
+
+
+
+
+
+
+
+
+

@@ -15,21 +15,24 @@ import com.company.domain.*;
 
 import static com.company.persistence.JdbcUtil.*;
 
-@Repository //(µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ »ç¿ë) == @Component 
-public class BookDAO {
 
-	@Autowired
-	private DataSource ds;
+@Repository // == @Component
+public class BookDAO {	
 	
+	
+	@Autowired
+	private DataSource ds;	
 	
 	
 	//insert
 	public boolean insert(BookDTO insertDto) {
-		String sql = "insert into BookTBL values(?,?,?,?)";
-		boolean insertFlag = false;
+		String sql = "insert into bookTBL values(?,?,?,?)";
+		boolean insertFlag=false;
+		
 		PreparedStatement pstmt = null;
 		Connection con = null;
-		try {
+		
+		try {		
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, insertDto.getCode());
@@ -38,121 +41,162 @@ public class BookDAO {
 			pstmt.setInt(4, insertDto.getPrice());
 			
 			int result = pstmt.executeUpdate();
+			
 			if(result>0) {
-				insertFlag=true;
-//				commit(con);
+				insertFlag=true;			
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(pstmt);
-		}
+		}	
+		
 		return insertFlag;
 	}
 	//delete
-	public boolean detele(String code) {
-		boolean deleteFlag = false;
-		PreparedStatement pstmt= null;
+	public boolean delete(String code) {
+		boolean deleteFlag=false;
+		PreparedStatement pstmt = null;
 		Connection con = null;
 		try {
 			con = ds.getConnection();
-			String sql = "delete from BookTBL where code = ?";
+			String sql = "delete from bookTBL where code=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, code);
 			int result = pstmt.executeUpdate();
+			
 			if(result>0) {
-				deleteFlag =true;
-//				commit(con);
+				deleteFlag=true;				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(pstmt);
 		}
+		
 		return deleteFlag;
 	}
 	
 	//update
-	public boolean update(String code, int price) {
+	public boolean update(String code,int price) {
 		boolean updateFlag = false;
-		PreparedStatement pstmt= null;
+		PreparedStatement pstmt = null;
 		Connection con = null;
 		try {
 			con = ds.getConnection();
-			String sql = "update BookTBL set price = ? where code= ?";
+			
+			String sql = "update bookTBL set price=? where code=?";
+			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, price);
+			pstmt.setInt(1,price);
 			pstmt.setString(2, code);
+			
 			int result = pstmt.executeUpdate();
+			
 			if(result>0) {
-				updateFlag = true;
-//				commit(con);
+				updateFlag=true;				
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(pstmt);
 		}
-		return updateFlag;
+		
+		return updateFlag;		
 	}
 	
 	//select
 	public List<BookDTO> list(){
-		List<BookDTO> booklist = new ArrayList<BookDTO>();
+		List<BookDTO> bookList = new ArrayList<BookDTO>();
 		
-		PreparedStatement pstmt = null;
-		ResultSet rs =  null;
-		Connection con = null;
-		try {
-			con = ds.getConnection();
-			String sql = "select * from BookTBL";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				BookDTO dto = new BookDTO();
-				dto.setCode(rs.getString("code"));
-				dto.setPrice(rs.getInt("price"));
-				dto.setTitle(rs.getString("title"));
-				dto.setWriter(rs.getString("writer"));
-				booklist.add(dto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-			close(rs);
-		}
-		return booklist;
-	}
-	
-	//¤¤¤¤
-	public List<BookDTO> search(String criteria,String keyword){
-		List<BookDTO> list = new ArrayList<BookDTO>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Connection con = null;
 		try {
 			con = ds.getConnection();
-			String sql = "select * from bookTBL where "+criteria+"=?"; 
-			pstmt =con.prepareStatement(sql);
-			pstmt.setString(1, keyword);
+			String sql = "select * from bookTBL";
+			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
-				BookDTO dto =  new BookDTO();
+				BookDTO dto = new BookDTO();
 				dto.setCode(rs.getString("code"));
-				dto.setPrice(rs.getInt("price"));
 				dto.setTitle(rs.getString("title"));
 				dto.setWriter(rs.getString("writer"));
-				list.add(dto);
+				dto.setPrice(rs.getInt("price"));
 				
+				bookList.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			close(pstmt);
+		} finally {
 			close(rs);
+			close(pstmt);
 		}
-		return list;
+		return bookList;
 	}
 	
+	//ê²€ìƒ‰
+	public List<BookDTO> search(String criteria,String keyword){
+		List<BookDTO> bookList = new ArrayList<BookDTO>();		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;		
+		Connection con = null;
+		try {
+			con = ds.getConnection();
+			String sql = "select * from bookTBL where "+criteria+" = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, keyword);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BookDTO dto = new BookDTO();
+				dto.setCode(rs.getString("code"));
+				dto.setTitle(rs.getString("title"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setPrice(rs.getInt("price"));
+				
+				bookList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return bookList;
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

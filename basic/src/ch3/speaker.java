@@ -1,9 +1,9 @@
 package ch3;
 
-public interface speaker {
+public interface Speaker {
 
-	void volumUp();
+	void volumeUp();
 
-	void volumDown();
+	void volumeDown();
 
 }

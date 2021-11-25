@@ -10,94 +10,128 @@ import com.company.domain.BookDTO;
 import com.company.service.BookService;
 
 public class BookClient {
-
+	
 	private static BookService service;
-
+	
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
-
-		// ¼­ºñ½º È£Ãâ
-		// BookService service = new BookService()
+		
+		//ì„œë¹„ìŠ¤ í˜¸ì¶œ
+		// BookService service = new BookServiceImpl();
 		service = (BookService) ctx.getBean("bookServiceImpl");
-		menu();
-
+		menu();		
 	}
-
+	
+	
 	public static void menu() {
-
+		
 		boolean flag = true;
-		while (flag) {
-			System.out.println("----------------------------------");
-			System.out.println("1.µµ¼­ Á¤º¸ Á¶È¸");
-			System.out.println("2.µµ¼­ Á¤º¸ Ãß°¡");
-			System.out.println("3.µµ¼­ Á¤º¸ »èÁ¦");
-			System.out.println("4.µµ¼­ ¸ñ·Ï ÀüÃ¼Á¶È¸;");
-			System.out.println("5.µµ¼­ Á¤º¸ ¼öÁ¤");
-			System.out.println("6.Á¾·á");
-			System.out.println("----------------------------------");
-
+		
+		while(flag) {
+			System.out.println("--------------------------------------");
+			System.out.println("1. ë„ì„œ ì •ë³´ ì¡°íšŒ");
+			System.out.println("2. ë„ì„œ ì •ë³´ ì¶”ê°€");
+			System.out.println("3. ë„ì„œ ì •ë³´ ì‚­ì œ");
+			System.out.println("4. ë„ì„œ ëª©ë¡ ì „ì²´ì¡°íšŒ");
+			System.out.println("5. ë„ì„œ ì •ë³´ ìˆ˜ì •");
+			System.out.println("6. ì¢…ë£Œ");
+			System.out.println("--------------------------------------");
+			
 			Scanner sc = new Scanner(System.in);
-			System.out.print("¸Þ´º¼±ÅÃ >>");
-			int no = Integer.parseInt(sc.next());
+			System.out.print("ë©”ë‰´ ì„ íƒ >> ");
+			int no = Integer.parseInt(sc.nextLine());		
+			
 			System.out.println();
-
+			
 			switch (no) {
 			case 1:
-				System.out.println("Á¶È¸ÇÒ µµ¼­ ÄÚµå ÀÔ·Â>>");
-				String code = sc.next();
-				BookDTO dto = service.getRow(code);
+				System.out.println("ì¡°íšŒí•  ë„ì„œ ì½”ë“œ ìž…ë ¥ >> ");
+				String code = sc.nextLine();
+				BookDTO dto=service.getRow(code);
 				
-				System.out.print(dto.getCode() + "\t");
-				System.out.print(dto.getTitle() + "\t");
-				System.out.print(dto.getWriter() + "\t");
-				System.out.print(dto.getPrice() + "\n");
+				System.out.print(dto.getCode()+"\t");
+				System.out.print(dto.getTitle()+"\t");
+				System.out.print(dto.getWriter()+"\t");
+				System.out.print(dto.getPrice()+"\n");
+				
 				break;
 			case 2:
-				// »õ·Î¿î µµ¼­ ÀÔ·Â
+				//ìƒˆë¡œìš´ ë„ì„œ ìž…ë ¥
+//				BookDTO insertDto = new BookDTO("1007", "ìŠ¤í”„ë§", "êµ¬ë©ê°€ê²Œ", 32000);
 				BookDTO insertDto = new BookDTO();
-				System.out.print("ÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
-				insertDto.setCode(sc.next());
-				System.out.print("Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä");
-				insertDto.setTitle(sc.next());
-				System.out.print("ÀÛ°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
-				insertDto.setWriter(sc.next());
-				System.out.print("°¡°ÝÀ» ÀÔ·ÂÇÏ¼¼¿ä");
-				insertDto.setPrice(Integer.parseInt( sc.next()));
-				System.out.println(service.insertBook(insertDto) ? "ÀÔ·Â¼º°ø" : "ÀÔ·Â½ÇÆÐ");
+				System.out.print("ë„ì„œì½”ë“œ : ");
+				insertDto.setCode(sc.nextLine());
+				
+				System.out.print("ë„ì„œì œëª© : ");
+				insertDto.setTitle(sc.nextLine());
+				
+				System.out.print("ë„ì„œì €ìž : ");
+				insertDto.setWriter(sc.nextLine());
+				
+				System.out.print("ë„ì„œê°€ê²© : ");
+				insertDto.setPrice(Integer.parseInt(sc.nextLine()));
+				
+				System.out.println(service.insertBook(insertDto)?"ìž…ë ¥ì„±ê³µ":"ìž…ë ¥ì‹¤íŒ¨");
 				break;
 			case 3:
-				//delete
-				System.out.println("»èÁ¦ÇÒ µµ¼­ ÄÚµå ÀÔ·Â>>");
-				String deletecode = sc.next();
-				System.out.println(service.detele(deletecode)?"»èÁ¦¼º°ø":"»èÁ¦½ÇÆÐ");
+				//ë„ì„œ ì •ë³´ ì‚­ì œ
+				System.out.println("ì‚­ì œí•  ë„ì„œ ì½”ë“œ ìž…ë ¥ >> ");
+				String deleteCode = sc.nextLine();
+				System.out.println(service.deleteBook(deleteCode)?"ì‚­ì œì„±ê³µ":"ì‚­ì œì‹¤íŒ¨");
 				break;
 			case 4:
-//				ÀüÃ¼ ¸®½ºÆ® °á°ú È£Ãâ
+				//ì „ì²´ ë¦¬ìŠ¤íŠ¸ ê²°ê³¼ í˜¸ì¶œ
 				List<BookDTO> list = service.getList();
-				System.out.println("ÄÚµå     Á¦¸ñ     ÀÛ°¡     °¡°Ý");
-				for (BookDTO book : list) {
-					System.out.print(book.getCode() + "\t");
-					System.out.print(book.getTitle() + "\t");
-					System.out.print(book.getWriter() + "\t");
-					System.out.print(book.getPrice() + "\n");
-				}
+				
+				System.out.println("ì½”ë“œ     ì œëª©     ìž‘ê°€     ê°€ê²©");
+				System.out.println("-------------------------------------");
+				for(BookDTO book:list) {
+					System.out.print(book.getCode()+"\t");
+					System.out.print(book.getTitle()+"\t");
+					System.out.print(book.getWriter()+"\t");
+					System.out.print(book.getPrice()+"\n");
+				}		
 				break;
-			
 			case 5:
-				 //update
-			
-				System.out.println("¼öÁ¤ÇÒ µµ¼­ ÄÚµå ÀÔ·Â>>");
-				String updatecode = sc.next();
-		
-				System.out.println("¼öÁ¤ÇÒ °¡°Ý ÀÔ·Â>>");
-				int updateprice = Integer.parseInt(sc.next());
-				System.out.println(service.update(updatecode,updateprice)?"¼öÁ¤¼º°ø":"¼öÁ¤½ÇÆÐ");
-			case 6:
-				flag = false;
+				//ë„ì„œ ì •ë³´ ìˆ˜ì •
+				System.out.println("ìˆ˜ì •í•  ë„ì„œ ì½”ë“œ ìž…ë ¥ >> ");
+				String updateCode = sc.nextLine();
+				System.out.println("ìˆ˜ì • ê°€ê²© ìž…ë ¥ >> ");
+				int updatePrice = Integer.parseInt(sc.nextLine());				
+				
+				System.out.println(service.updateBook(updateCode, updatePrice)?"ìˆ˜ì •ì„±ê³µ":"ìˆ˜ì •ì‹¤íŒ¨");
 				break;
+			case 6:
+				flag=false;
+				break;			
 			}
 		}
-
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

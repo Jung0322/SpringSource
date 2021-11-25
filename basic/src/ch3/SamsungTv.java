@@ -1,29 +1,24 @@
 package ch3;
 
-
 public class SamsungTv implements TV{
-	
-	public SamsungTv() {
-		System.out.println("samsung Tv °´Ã¼»ý¼º");
-	}
 	@Override
 	public void turnOn() {
-		System.out.println("SamsungTv - ÆÄ¿ö On");
+		System.out.println("SamsungTv - íŒŒì›Œ On");
 		
 	}
 	@Override
 	public void turnOff() {
-		System.out.println("SamsungTv - ÆÄ¿ö Off");
+		System.out.println("SamsungTv - íŒŒì›Œ Off");
 		
 	}
 	@Override
 	public void soundUp() {
-		System.out.println("SamsungTv - º¼·ý Up");
+		System.out.println("SamsungTv - ë³¼ë¥¨ Up");
 		
 	}
 	@Override
 	public void soundDown() {
-		System.out.println("SamsungTv - º¼·ý Down");
+		System.out.println("SamsungTv - ë³¼ë¥¨ Down");
 		
 	}
 }

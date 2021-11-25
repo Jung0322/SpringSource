@@ -13,10 +13,20 @@ public class BookRowMapper implements RowMapper<BookDTO> {
 	public BookDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		BookDTO dto = new BookDTO();
 		dto.setCode(rs.getString("code"));
-		dto.setPrice(rs.getInt("price"));
 		dto.setTitle(rs.getString("title"));
 		dto.setWriter(rs.getString("writer"));
+		dto.setPrice(rs.getInt("price"));
 		return dto;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+

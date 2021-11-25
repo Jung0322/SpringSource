@@ -5,14 +5,14 @@ import java.util.List;
 import com.company.domain.BoardDTO;
 
 public interface BoardService {
-	//µî·Ï
-	public boolean insertBoard(BoardDTO dto);
-	//»èÁ¦
+	//ë“±ë¡
+	public boolean insertBoard(BoardDTO insertDto);
+	//ì‚­ì œ
 	public boolean deleteBoard(int bno);
-	//°³º°Á¶È¸
+	//ê°œë³„ì¡°íšŒ
 	public BoardDTO getRow(int bno);
-	//°³º°Á¶È¸
+	//ì „ì²´ì¡°íšŒ
 	public List<BoardDTO> getRows();
-	//¼öÁ¤
-	public boolean updateBoard(BoardDTO dto);
+	//ìˆ˜ì •
+	public boolean updateBoard(BoardDTO updateDto);
 }
