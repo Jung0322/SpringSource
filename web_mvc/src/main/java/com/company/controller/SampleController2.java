@@ -53,6 +53,8 @@ public class SampleController2 {
 		return "admin";  
 		//   admin =>     /WEB-INF/views/admin.jsp
 	}
+	
+	
 }
 
 

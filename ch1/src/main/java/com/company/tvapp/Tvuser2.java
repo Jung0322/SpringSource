@@ -8,7 +8,7 @@ public class Tvuser2 {
 
 		
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationConfig.xml");
-		LGTv tv =(LGTv) ctx.getBean("lg");
+		LgTv tv =(LgTv) ctx.getBean("lg");
 		
 	
 		tv.turnOn();

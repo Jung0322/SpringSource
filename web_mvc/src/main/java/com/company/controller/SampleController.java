@@ -3,8 +3,11 @@ package com.company.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.domain.UserDTO;
 
@@ -65,28 +68,35 @@ public class SampleController {
 	
 	
 	
+//	@RequestMapping(value="/login",method=RequestMethod.POST)
+//	public String loginPost(String userid,@RequestParam("pwd") String password, Model model) {
+//		log.info("/login Post 요청");
+//		
+//		log.info("userid : "+userid);
+//		log.info("password : "+password);
+//		
+////	request.setAttribute == Model.setAttribute
+//		model.addAttribute("password", password);
+//		model.addAttribute("userid", userid);
+//		
+//		
+//		
+//		return "/sample/basic";
+//	}
+	
+	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String loginPost(String userid,String password) {
+	public String loginPost(@ModelAttribute("login") UserDTO userDto) {
 		log.info("/login Post 요청");
 		
-		log.info("userid : "+userid);
-		log.info("password : "+password);
+		log.info("userid : "+userDto.getUserid());
+		log.info("password : "+userDto.getPassword());
+		log.info("name : "+userDto.getName());
 		
 		
 		return "/sample/basic";
 	}
 	
-	
-//	@RequestMapping(value="/login",method=RequestMethod.POST)
-//	public String loginPost(UserDTO userDto) {
-//		log.info("/login Post 요청");
-//		
-//		log.info("userid : "+userDto.getUserid());
-//		log.info("password : "+userDto.getPassword());
-//		
-//		
-//		return "/sample/basic";
-//	}
 	
 	
 	
