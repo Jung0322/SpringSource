@@ -8,4 +8,6 @@ public interface BookService {
 	public List<BookDTO> list();
 	public boolean insert(BookDTO dto);
 	public BookDTO getRow(String code);
+	public boolean delete(String code);
+	public boolean update(BookDTO dto);
 }
