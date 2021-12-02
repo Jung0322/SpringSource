@@ -3,9 +3,9 @@
 <mapper namespace="com.company.mapper.BoardMapper">
 	<!-- 입력 -->
 	<insert id="insert">
-	<!-- 주로 pk 값을 미리 sql 문을 통해 처리해 두고 특정한 이름으로 결과를 보관 -->
-		<!-- keyProperty : BoardDTO에 정의해준 변수명  -->
-		
+		<!-- 주로 pk 값을 미리 sql 문을 통해 처리해 두고 특정한 이름으로 결과를 보관 -->
+		<!-- keyProperty : BoardDTO에 정의해준 변수명 -->
+
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select seq_board.nextval from dual
 		</selectKey>
@@ -13,43 +13,80 @@
 		values(#{bno},#{title},#{content},#{writer})
 	</insert>
 
-	<!-- 전체 리스트 :페이지 나누기 전-->
-<!-- <select id="listAll" resultType="com.company.domain.BoardDTO">
-		select bno,title,writer,regdate,updatedate from spring_board
-		where bno>0 order by bno desc, regdate desc
-	</select> -->
-	
+	<!-- 전체 리스트 :페이지 나누기 전 -->
+	<!-- <select id="listAll" resultType="com.company.domain.BoardDTO"> select 
+		bno,title,writer,regdate,updatedate from spring_board where bno>0 order by 
+		bno desc, regdate desc </select> -->
+
 	<!-- 전체 리스트 -->
-	<select id="listAll" resultType="com.company.domain.BoardDTO">
-		<![CDATA[
-			select bno,title,writer,regdate,updatedate
-			from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title,writer,regdate,updatedate
-		 		  from spring_board
-		  		  where rownum <=(#{pageNum} * #{amount}))
-			where rn> (#{pageNum}-1) * #{amount}
-		]]>
-		
-	</select>
-	
+<select  id="listAll" resultType="com.company.domain.BoardDTO">
+   
+   <![CDATA[ 
+   select rn,bno,title,writer,regdate,updatedate
+      from(select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title,writer,regdate,updatedate
+         from SPRING_BOARD
+         where     
+   ]]>
+
+		<include refid="criteria"></include>
+
+   <![CDATA[ 
+         rownum <= (#{pageNum} * #{amount}))
+      where rn> (#{pageNum}-1) * #{amount}
+   ]]>
+   </select>
+
 	<!-- 전체 게시물 수 -->
 	<select id="totalCnt" resultType="int">
 		select count(*)
-		from spring_board
-		where bno > 0
+		from
+		spring_board
+		where
+		
+		<include refid="criteria"></include>
+		
+		
+		 bno > 0
 	</select>
-	
+
 	<!-- read -->
 	<select id="getRow" resultType="com.company.domain.BoardDTO">
-		select bno,title,content,writer from spring_board where bno = #{bno}
+		select bno,title,content,writer
+		from spring_board where bno = #{bno}
 	</select>
-	
+
 	<!-- update -->
 	<update id="update">
-		update spring_board set title=#{title}, content=#{content}, updatedate=sysdate where bno = #{bno}
+		update spring_board set title=#{title},
+		content=#{content}, updatedate=sysdate where bno = #{bno}
 	</update>
-	
+
 	<!-- 삭제 -->
 	<delete id="delete">
 		delete from spring_board where bno=#{bno}
 	</delete>
+
+
+
+	<sql id="criteria">
+	
+	         <trim prefix="(" suffix=") AND" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+               <trim prefix="OR">
+                  <choose>
+                     <when test="type=='T'.toString()">
+                        title like '%'||#{keyword}||'%'
+                     </when>
+                     <when test="type=='C'.toString()">
+                        content like '%'||#{keyword}||'%'
+                     </when>
+                     <when test="type=='W'.toString()">
+                        writer like '%'||#{keyword}||'%'
+                     </when>
+                  </choose>
+               </trim>   
+            </foreach>   
+         </trim>
+	
+	</sql>
 </mapper>

@@ -70,3 +70,5 @@ from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title
 where rn>10;
 
 --MyBatis 동적 태그
+
+--MyBatis 동적 태그

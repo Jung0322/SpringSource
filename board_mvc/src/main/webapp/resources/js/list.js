@@ -54,6 +54,9 @@ $(function(){
 		//가져온 값을 actionForm의 amount 값 수정하기
 		actionForm.find("input[name='amount']").val(amount);
 		
+		//bno제거
+		actionForm.find("input[name='bno']").remove();	
+		
 		//amountForm 보내기
      	 actionForm.submit();
 	})
