@@ -16,6 +16,8 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class BaiscController {
 	
+	
+	
 	@GetMapping("/hello")
 	public String hello() {
 		log.info("hello");

@@ -72,3 +72,33 @@ where rn>10;
 --MyBatis 동적 태그
 
 --MyBatis 동적 태그
+
+-- 댓글 테이블
+create table spring_reply(
+	rno number(10,0) constraint pk_reply primary key, -- 댓글 글번호
+	bno number(10,0) not null,	-- 원본 글번호
+	reply varchar2(1000) not null,	--댓글 내용
+	replyer varchar2(50) not null,	--댓글 작성자
+	replaydate date default sysdate,	--댓글 작성일
+	updatedate date default sysdate,	--댓글 수정일
+	constraint fk_reply_board foreign key(bno) references spring_board(bno)	--외래 키 설정
+);
+
+
+create sequence seq_reply;
+
+select * from SPRING_reply;
+
+alter table spring_reply rename column replaydate to replydate;
+
+alter table spring_reply rename column replayer to replyer;
+
+
+-- 인덱스 생성
+create index idx_reply on spring_reply(bno desc, rno asc);
+
+	select rno,bno,reply,replyer,replydate,updatedate
+	from (select /*INDEX(sping_reply idx_reply)*/rownum rn,rno,bno,reply,replyer,replydate,updatedate
+		 from spring_reply
+		 where bno=1304 and rno>0 and rownum<=10)
+	where rn>0;

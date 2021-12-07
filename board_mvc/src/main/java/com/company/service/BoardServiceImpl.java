@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.company.domain.BoardDTO;
 import com.company.domain.Criteria;
+import com.company.domain.ReplyDTO;
 import com.company.mapper.BoardMapper;
 
 @Service
@@ -49,6 +50,12 @@ public class BoardServiceImpl implements BoardService {
 	public int getTotalCount(Criteria cri) {
 		// TODO Auto-generated method stub
 		return mapper.totalCnt(cri);
+	}
+
+	@Override
+	public boolean insert(ReplyDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.insert(dto)>0?true:false;
 	}
 	
 	
