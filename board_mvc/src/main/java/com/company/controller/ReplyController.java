@@ -86,5 +86,6 @@ public class ReplyController {
 			Criteria cri = new Criteria(page,10);
 			
 			return new ResponseEntity<ReplyPageDTO>(service.getList(cri,bno),HttpStatus.OK);
+			
 		}
 }

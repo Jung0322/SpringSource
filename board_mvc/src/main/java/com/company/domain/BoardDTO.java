@@ -14,10 +14,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class BoardDTO {
-	int bno;
-	String title;
-	String content;
-	String writer;
-	Date regdate;
-	Date updatedate;
+	private int bno;
+	private String title;
+	private String content;
+	private String writer;
+	private Date regdate;
+	private Date updatedate;
+	private int replycnt;
 }

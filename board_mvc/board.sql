@@ -39,8 +39,8 @@ from spring_board
 where rownum <=10;
 
 --1 : 최신글 10개 가지고 나오기
-select rn,bno,title
-from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title
+select rn,bno,title,replycnt
+from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title,replycnt
 	  from spring_board
 	  where rownum <=10)
 where rn>0;
@@ -102,3 +102,14 @@ create index idx_reply on spring_reply(bno desc, rno asc);
 		 from spring_reply
 		 where bno=1304 and rno>0 and rownum<=10)
 	where rn>0;
+	
+	
+	
+-- spring_board 테이블에 댓글 수를 저장할 컬럼 추가
+alter table spring_board add(replycnt number default 0);
+
+-- 이미 들어간 대글 수 삽입
+update spring_board
+set replycnt = (select count(rno) 
+				from spring_reply 
+				where spring_board.bno=spring_reply.bno);
