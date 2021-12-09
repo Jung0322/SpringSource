@@ -243,5 +243,22 @@ $(function(){
 		pageNum =  $(this).attr('href');
 		showList(pageNum);
 	})
+	
+	
+	
+	
+	
+	
+	
+	//첨부파일 가져오기
+	$.getJSON({
+		url:'/board/getAttachList',
+		data:{
+			bno:bno
+		},
+		success:function(data){
+			console.log(data);
+		}
+	})
    
 })

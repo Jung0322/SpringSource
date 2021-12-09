@@ -127,14 +127,14 @@ public class UploadAjaxController {
 	@PostMapping("/deleteFile")
 	public ResponseEntity<String> deleteFile(String fileName, String type) {
 		log.info("파일삭제 : "+"fileName "+fileName+" type: "+type);
-		//이미지 파일인 경우 - 원본 이미지와 썸네일 이미지를 삭제
 		
-		//일반 파일인 경우 - 원본 파일만 삭제
 		
 		try {
+			//일반 파일인 경우 - 원본 파일만 삭제
 			File file = new File("e:\\upload\\"+URLDecoder.decode(fileName,"utf-8"));
 			file.delete();
 			
+			//이미지 파일인 경우 - 원본 이미지와 썸네일 이미지를 삭제
 			if(type.equals("image")) {// 원본 이미지 삭제
 				String largeName = file.getAbsolutePath().replace("s_", "");
 				new File(largeName).delete();
