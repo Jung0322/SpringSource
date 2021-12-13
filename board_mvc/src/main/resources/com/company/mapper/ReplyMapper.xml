@@ -23,6 +23,11 @@
 		delete from spring_reply where rno = #{rno}
 	</delete>
 	
+	<!-- 댓글 삭제 : bno 일치 -->
+	<delete id = "deleteAll">
+		delete from spring_reply where bno = #{bno}
+	</delete>
+	
 	<!-- bno가 일치하는 댓글 가져오기 -->
 	<select id="list" resultType="com.company.domain.ReplyDTO">
 	<![CDATA[
@@ -35,7 +40,7 @@
 	</select>
 	
 	
-	<!-- bno가 일치하는 댓긍의 전체 댓글 수 -->
+	<!-- bno가 일치하는 댓글의 전체 댓글 수 -->
 	<select id="getCountByBno" resultType="int">
 		select count(rno) from spring_reply where bno=#{bno}
 	</select>

@@ -3,15 +3,17 @@ package com.company.app;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.company.config.BoardConfig;
 import com.company.domain.BoardDTO;
 import com.company.service.BoardService;
 
 public class BoardClient {
 	public static void main(String[] args) {
 		
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(BoardConfig.class);
 		BoardService service  = (BoardService) ctx.getBean("boardService");		
 		
 //		BoardDTO insertDto = new BoardDTO();
@@ -38,24 +40,32 @@ public class BoardClient {
 //		
 //		System.out.println(service.updateBoard(updateDto)?"수정성공":"수정실패");		
 		
-		System.out.println(service.deleteBoard(61)?"삭제성공":"삭제실패");
+//		System.out.println(service.deleteBoard(61)?"삭제성공":"삭제실패");
 		
 		System.out.println();		
 		
 		
-		List<BoardDTO> list = service.getRows();
+		BoardDTO list = service.getRow(652);
 		
-		System.out.println("-------------------------------------");
-		System.out.println("bno\t title\t content\t writer\t regdate\t updatedate");
-		System.out.println("-------------------------------------");
-		for(BoardDTO dto:list) {
-			System.out.print(dto.getBno()+"\t");
-			System.out.print(dto.getTitle()+"\t");
-			System.out.print(dto.getContent()+"\t");
-			System.out.print(dto.getWriter()+"\t");
-			System.out.print(dto.getRegdate()+"\t");
-			System.out.print(dto.getUpdatedate()+"\n");		
-		}
+		System.out.print(list.getBno()+"\t");
+		System.out.print(list.getTitle()+"\t");
+		System.out.print(list.getContent()+"\t");
+		System.out.print(list.getWriter()+"\t");
+		System.out.print(list.getRegdate()+"\t");
+		System.out.print(list.getUpdatedate()+"\n");	
+		
+//		List<BoardDTO> list1 = service.getRows();
+//		System.out.println("-------------------------------------");
+//		System.out.println("bno\t title\t content\t writer\t regdate\t updatedate");
+//		System.out.println("-------------------------------------");
+//		for(BoardDTO dto:list1) {
+//			System.out.print(dto.getBno()+"\t");
+//			System.out.print(dto.getTitle()+"\t");
+//			System.out.print(dto.getContent()+"\t");
+//			System.out.print(dto.getWriter()+"\t");
+//			System.out.print(dto.getRegdate()+"\t");
+//			System.out.print(dto.getUpdatedate()+"\n");		
+//		}
 
 	}
 }

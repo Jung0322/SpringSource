@@ -11,6 +11,7 @@ alter table spring_board add constraint pk_spring_board primary key(bno);
 
 create sequence seq_board;
 
+select * from SPRING_BOARD;
 
 
 
