@@ -145,3 +145,7 @@ select * from spring_board;
 -- spring_board bno 가 삭제가 될 때 게시물에 달려있는 댓글은 어떻게 할것인가?
 
 -- spring_board bno 가 삭제가 될 때 첨부물은 삭제 ?
+
+
+
+
